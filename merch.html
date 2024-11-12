@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ichiko Aoba | Merchandise</title>
+        <link rel="stylesheet" href="merch.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Libre Baskerville", serif;
+            }
+
+            body {
+                background: #836f5e;
+                color: black;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                transition: background-color 3s ease;
+                line-height: 1.6;
+                font-family: "Libre Baskerville", serif;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                background-color: #5a4634;
+                color: white;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                transition: background-color 3s ease;
+                height: 7%;
+            }
+            .navbar .logo {
+                width: 150px;
+                height: auto;
+                max-height: 50px;
+            }
+            .navbar ul {
+                display: flex;
+                list-style: none;
+            }
+            .navbar ul li {
+                margin-left: 30px;
+            }
+            .navbar ul li a {
+                text-decoration: none;
+                color: white;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            .merchandise-section {
+                max-width: 1200px;
+                margin: 0 auto 40px;
+                margin-top: 100px;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .merchandise-section h1 {
+                font-size: 3rem;
+                color: #f7f7f7;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                font-weight: 400;
+                letter-spacing: 0.1em;
+            }
+
+            .merchandise-section p {
+                font-size: 1.2rem;
+                color: #f7f7f7;
+                margin-bottom: 50px;
+                font-weight: 200;
+                letter-spacing: 0.08em;
+                line-height: 1.8;
+            }
+
+            .merchandise-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+                gap: 50px;
+                justify-content: center;
+            }
+
+            .product {
+                background-color: #c9b7a0;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+                border: none;
+            }
+
+            .image-container {
+                width: 300px;
+                height: 300px;
+                position: relative;
+                overflow: hidden;
+                border-radius: 10px;
+                margin: 0 auto 20px;
+            }
+
+            .product-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .product h2 {
+                font-size: 1.4rem;
+                color: #f7f7f7;
+                margin-bottom: 15px;
+                font-weight: 500;
+            }
+
+            .product p {
+                font-size: 1rem;
+                color: #f7f7f7;
+            }
+
+            @media (max-width: 768px) {
+                .merchandise-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .footer {
+                background-color: #5a4634;
+                color: #f7f7f7;
+                padding: 40px 20px;
+                text-align: center;
+                font-family: "Montserrat", sans-serif;
+            }
+
+            .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-social h4,
+            .footer-links h4 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                color: #d4d4d4;
+            }
+
+            .social-icons {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                padding: 0;
+            }
+
+            .social-icons li {
+                display: inline-block;
+            }
+
+            .footer-links ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-links ul li {
+                margin-bottom: 10px;
+            }
+
+            .footer-links ul li a {
+                color: #f7f7f7;
+                text-decoration: none;
+            }
+
+            .footer-copyright {
+                margin-top: 20px;
+                font-size: 0.9rem;
+                color: #ccc;
+            }
+
+            @media (min-width: 768px) {
+                .footer-container {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    text-align: left;
+                }
+
+                .footer-social,
+                .footer-links {
+                    flex: 1;
+                }
+            }
+
+            .banner-container {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .banner-image {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="/Images/logo.png" alt="" /></a>
+            </div>
+            <ul>
+                <li><a href="merch.html">Merchandise</a></li>
+                <li><a href="tour.html">Tour</a></li>
+                <li><a href="fanclub.html">Fan Club</a></li>
+            </ul>
+        </nav>
+
+        <section class="merchandise-section">
+            <h1>Merchandise</h1>
+            <p>
+                Explore the newest collection of exclusive Ichiko Aoba
+                merchandise, featuring unique and beautifully crafted items that
+                capture the essence of her artistry. By purchasing these
+                products, you are directly supporting Ichiko Aoba in her
+                creative journey, allowing her to continue producing the
+                captivating music and experiences her fans love. Each piece of
+                merchandise is thoughtfully designed to connect you with the
+                world of Ichiko Aoba, making it a perfect addition for dedicated
+                fans and collectors alike.
+            </p>
+
+            <div class="merchandise-grid">
+                <div class="product">
+                    <div class="image-container">
+                        <img
+                            src="Images/vinyl1.jpg"
+                            alt="Vinyl Record"
+                            class="product-image"
+                        />
+                    </div>
+                    <h2>Windswept Adan Vinyl</h2>
+                    <p>$40.00</p>
+                </div>
+                <div class="product">
+                    <div class="image-container">
+                        <img
+                            src="Images/vinyl2.jpg"
+                            alt="CD"
+                            class="product-image"
+                        />
+                    </div>
+                    <h2>0 CD</h2>
+                    <p>$15.00</p>
+                </div>
+                <div class="product">
+                    <div class="image-container">
+                        <img
+                            src="Images/vinyl3.jpg"
+                            alt="Poster"
+                            class="product-image"
+                        />
+                    </div>
+                    <h2>qp Vinyl</h2>
+                    <p>$20.00</p>
+                </div>
+                <div class="product">
+                    <div class="image-container">
+                        <img
+                            src="Images/tshirt.jpg"
+                            alt="T-shirt"
+                            class="product-image"
+                        />
+                    </div>
+                    <h2>Ichiko Aoba T-shirt</h2>
+                    <p>$30.00</p>
+                </div>
+                <div class="product">
+                    <div class="image-container">
+                        <img
+                            src="Images/tshirt2.jpg"
+                            alt="T-shirt"
+                            class="product-image"
+                        />
+                    </div>
+                    <h2>Ichiko Aoba T-shirt</h2>
+                    <p>$30.00</p>
+                </div>
+                <div class="product">
+                    <div class="image-container">
+                        <img
+                            src="Images/tshirt3.jpg"
+                            alt="T-shirt"
+                            class="product-image"
+                        />
+                    </div>
+                    <h2>Ichiko Aoba T-shirt</h2>
+                    <p>$30.00</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-social">
+                    <h4>Follow Ichiko Aoba</h4>
+                    <ul class="social-icons">
+                        <li>
+                            <a
+                                href="https://twitter.com/ichikoaoba"
+                                target="_blank"
+                                ><i class="fab fa-twitter"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.instagram.com/ichikoaoba"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.facebook.com/ichikoaoba"
+                                target="_blank"
+                                ><i class="fab fa-facebook-f"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://open.spotify.com/artist/1fUZTiJcRd0gQcwOpOXgo9"
+                                target="_blank"
+                                ><i class="fab fa-spotify"></i
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#discography">Discography</a></li>
+                        <li><a href="#biography">Biography</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Ichiko Aoba. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

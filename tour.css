@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Libre Baskerville", serif;
+    background-color: #f7f7f7;
+    color: black;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #5a4634;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 3s ease;
+}
+
+.navbar .logo {
+    width: 150px;
+    height: auto;
+    max-height: 50px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 30px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #dda95b;
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #5a4634;
+    color: #f7f7f7;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-social h4,
+.footer-links h4 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #d4d4d4;
+}
+
+.social-icons {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+}
+
+.social-icons li a {
+    color: #f7f7f7;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons li a:hover {
+    color: #dda95b;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #f7f7f7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #dda95b;
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-social,
+    .footer-links {
+        flex: 1;
+    }
+}
+
+.hero {
+    background: linear-gradient(135deg, #836f5e, #a5896b);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tour-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.tour-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: #f7f7f7;
+    margin-bottom: 40px;
+}
+
+.tour-poster {
+    width: 60%;
+    margin-right: 40px;
+}
+
+.tour-poster img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tour-info {
+    width: 40%;
+    text-align: left;
+}
+
+.tour-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.tour-info p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.tour-info a {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #dd3c2e;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.tour-info a:hover {
+    background-color: #c23226;
+}
+
+.tour-filter {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.tour-filter select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+.tour-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.tour-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tour-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tour-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.tour-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.tour-item .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #191414;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.tour-item .btn:hover {
+    background-color: #dda95b;
+}
+
+.tour-item .icons {
+    display: flex;
+    gap: 10px;
+}
+
+.tour-item .icons i {
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+}
+
+.tour-item .icons i:hover {
+    color: #000;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons i {
+    color: #999;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.icons i:hover {
+    color: #000;
+}
+
+.tour-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.tour-item .btn {
+    margin-left: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#ticket-form input,
+#ticket-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+#ticket-form button {
+    background-color: #191414;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#ticket-form button:hover {
+    background-color: #dda95b;
+    cursor: pointer;
+}

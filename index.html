@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lichiko aoFa Gallery</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Libre Baskerville", serif;
+            }
+            body {
+                background: #836f5e;
+                color: black;
+                margin: 0;
+                padding: 0;
+                transition: background-color 3s ease;
+                font-family: "Libre Baskerville", serif;
+            }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                background-color: #5a4634;
+                color: white;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                transition: background-color 3s ease;
+                height: 7%;
+            }
+            .navbar .logo {
+                width: 150px;
+                height: auto;
+                max-height: 50px;
+            }
+            .navbar ul {
+                display: flex;
+                list-style: none;
+            }
+            .navbar ul li {
+                margin-left: 30px;
+            }
+            .navbar ul li a {
+                text-decoration: none;
+                color: white;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+            .hero {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 50px 150px;
+                margin-top: 120px;
+                margin-bottom: 120px;
+                position: relative;
+            }
+            .hero-text {
+                max-width: 50%;
+                margin-left: 150px;
+            }
+            .hero-text h2 {
+                font-size: 6rem;
+                font-weight: bold;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                letter-spacing: 1.5px;
+            }
+            .hero-text p {
+                font-size: 1.5rem;
+                line-height: 1.6;
+                color: #333;
+                margin-bottom: 20px;
+            }
+            .hero-image-container {
+                position: relative;
+                width: 600px;
+                height: 600px;
+                overflow: visible;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            }
+            .hero-images {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+            }
+            .gallery-image {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                border-radius: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            }
+            .controls {
+                position: absolute;
+                left: 30px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+            }
+            .control-button {
+                position: relative;
+                margin: 10px 0;
+
+                padding: 15px;
+                background-color: #191414;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            .scroll-indicator {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .scroll-indicator span {
+                font-size: 1rem;
+                letter-spacing: 2px;
+                color: #191414;
+            }
+            .scroll-indicator .arrow {
+                margin-top: 5px;
+                width: 20px;
+                height: 20px;
+                border-right: 2px solid black;
+                border-bottom: 2px solid black;
+                transform: rotate(45deg);
+            }
+            .biography {
+                padding: 60px 20px;
+                background-color: #fff7d6;
+                color: #333;
+                text-align: left;
+            }
+            .biography-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                max-width: 1200px;
+                margin: 0 auto;
+                gap: 40px;
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+            .biography-text {
+                flex: 1;
+                padding-right: 20px;
+            }
+            .biography-text h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                color: #191414;
+            }
+            .biography-text h3 {
+                font-size: 1.5rem;
+                font-weight: 400;
+                margin-bottom: 20px;
+                color: #666;
+            }
+            .biography-text p {
+                font-size: 1rem;
+                line-height: 1.8;
+                margin-bottom: 20px;
+                color: #333;
+            }
+            .biography-image {
+                flex: 1;
+                max-width: 600px;
+                margin-top: 100px;
+            }
+            .biography-image img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+            .biography-image p {
+                font-size: 0.9rem;
+                color: #888;
+                margin-top: 10px;
+                text-align: center;
+            }
+            @media (max-width: 768px) {
+                .biography-container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .biography-text,
+                .biography-image {
+                    flex: none;
+                    width: 100%;
+                    padding: 0;
+                }
+                .biography-text {
+                    text-align: center;
+                    padding: 0 20px;
+                }
+            }
+            .footer {
+                background-color: #5a4634;
+                color: #f7f7f7;
+                padding: 40px 20px;
+                text-align: center;
+                font-family: "Montserrat", sans-serif;
+            }
+            .footer-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .footer-social h4,
+            .footer-links h4 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                color: #d4d4d4;
+            }
+            .social-icons {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                padding: 0;
+            }
+            .social-icons li {
+                display: inline-block;
+            }
+            .footer-links ul {
+                list-style: none;
+                padding: 0;
+            }
+            .footer-links ul li {
+                margin-bottom: 10px;
+            }
+            .footer-links ul li a {
+                color: #f7f7f7;
+                text-decoration: none;
+            }
+            .footer-copyright {
+                margin-top: 20px;
+                font-size: 0.9rem;
+                color: #ccc;
+            }
+            .featured-section {
+                background-color: #fff7d6;
+                padding: 60px 20px;
+                text-align: center;
+                color: #333;
+            }
+
+            .featured-section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                color: #191414;
+            }
+
+            .featured-section p {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+                line-height: 1.8;
+                color: #666;
+            }
+
+            .video-container {
+                position: relative;
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                border-radius: 15px;
+                overflow: hidden;
+                transition: transform 0.3s ease;
+            }
+
+            .video-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    45deg,
+                    rgba(255, 182, 193, 0.3),
+                    rgba(123, 104, 238, 0.3)
+                );
+                border-radius: 15px;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .play-button-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                color: white;
+                z-index: 2;
+                opacity: 0.8;
+                cursor: pointer;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            .play-button-overlay i {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 4rem;
+            }
+
+            .video-container:hover {
+                transform: scale(1.02);
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            }
+
+            .video-container:hover .play-button-overlay {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+
+            .video-container iframe {
+                position: relative;
+                width: 100%;
+                height: 600px;
+                border: none;
+                z-index: 0;
+            }
+
+            .video-description {
+                max-width: 800px;
+                margin: 20px auto;
+                text-align: center;
+                font-size: 1.1rem;
+                color: #333;
+            }
+
+            .featured-video-section {
+                display: flex;
+                align-items: center;
+                gap: 100px;
+                max-width: 2000px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            /* Wrapper to center the TV on the page */
+            .tv-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px 20px;
+            }
+
+            /* TV Container to manage positioning */
+            .tv-container {
+                position: relative;
+                width: 900px; /* Adjust based on your TV PNG size */
+                height: 600px;
+            }
+
+            /* The iframe should fit within the transparent area of the TV screen */
+            .tv-container iframe {
+                position: absolute;
+                top: 20%; /* Adjust to fit the screen area */
+                left: 11%; /* Adjust to fit the screen area */
+                width: 78%; /* Adjust width to fit the screen */
+                height: 80%; /* Adjust height to fit the screen */
+                border: none;
+                z-index: 1; /* Ensures it appears behind the TV frame */
+            }
+
+            /* TV Frame Image Overlay */
+            .tv-frame {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 120%;
+                height: 90%;
+                z-index: 2; /* Ensures it appears in front of the iframe */
+                pointer-events: none; /* Allows clicks to go through to the iframe */
+            }
+
+            .video-details {
+                max-width: 1000px;
+                padding: 10px 20px;
+            }
+
+            .video-details h2 {
+                font-size: 2.5rem;
+                color: #5c4a48;
+                margin-bottom: 10px;
+                font-family: "Libre Baskerville", serif;
+            }
+
+            .video-details p {
+                font-size: 1rem;
+                color: #5c4a48;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            /* Button styling */
+            .watch-button {
+                background-color: #e0d6cf;
+                color: #5c4a48;
+                padding: 10px 20px;
+                font-size: 1rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .watch-button:hover {
+                background-color: #d0c3bc;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+                font-family: "Libre Baskerville", serif;
+                color: #5c4a48;
+                text-align: center;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            @media (min-width: 768px) {
+                .footer-container {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    text-align: left;
+                }
+                .footer-social,
+                .footer-links {
+                    flex: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="/Images/logo.png" alt="" /></a>
+            </div>
+            <ul>
+                <li><a href="merch.html">Merchandise</a></li>
+                <li><a href="tour.html">Tour</a></li>
+                <li><a href="fanclub.html">Fan Club</a></li>
+            </ul>
+        </nav>
+        <section class="hero">
+            <div class="hero-text">
+                <h2 id="image-title">Luminescent</h2>
+                <p id="image-description">
+                    A glowing display of the Luminescent series, capturing light
+                    in motion.
+                </p>
+            </div>
+
+            <div class="hero-image-container">
+                <div class="hero-images">
+                    <img
+                        id="image-0"
+                        class="gallery-image active"
+                        src="/Images/amiko.jpg"
+                        alt="Amiko Design"
+                    />
+                    <img
+                        id="image-1"
+                        class="gallery-image"
+                        src="/Images/amuletum.jpg"
+                        alt="Amuletum Design"
+                    />
+                    <img
+                        id="image-2"
+                        class="gallery-image"
+                        src="/Images/luminescent.jpg"
+                        alt="Luminescent Design"
+                    />
+                    <img
+                        id="image-3"
+                        class="gallery-image"
+                        src="/Images/meringue.jpg"
+                        alt="Meringue Design"
+                    />
+                    <img
+                        id="image-4"
+                        class="gallery-image"
+                        src="/Images/windswept.jpg"
+                        alt="Windswept Design"
+                    />
+                </div>
+            </div>
+
+            <div class="controls">
+                <button
+                    id="prev"
+                    class="control-button"
+                    data-tooltip="Previous"
+                    onclick="showPrev()"
+                >
+                    <i class="fas fa-arrow-left"></i>
+                    <span class="tooltip">Previous</span>
+                </button>
+
+                <button
+                    id="next"
+                    class="control-button"
+                    data-tooltip="Next"
+                    onclick="showNext()"
+                >
+                    <i class="fas fa-arrow-right"></i>
+                    <span class="tooltip">Next</span>
+                </button>
+
+                <button
+                    id="shuffle"
+                    class="control-button"
+                    data-tooltip="Shuffle"
+                    onclick="shuffleImage()"
+                >
+                    <i class="fas fa-random"></i>
+                    <span class="tooltip">Shuffle</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="biography" class="biography">
+            <div class="biography-container">
+                <!-- Biography Text Section -->
+                <div class="biography-text">
+                    <h2>About Ichiko Aoba</h2>
+                    <h3>Founder of independent label hermine.</h3>
+                    <p>
+                        Ichiko Aoba is a Japanese singer-songwriter, known for
+                        her unique blend of folk, classical, and ambient music.
+                        Born in 1990, Ichiko began playing classical guitar at
+                        the age of 17, and her ethereal, introspective sound has
+                        since captivated audiences around the world. She has
+                        released several studio albums, collaborated with
+                        various artists, and contributed music to films, video
+                        games, and theater productions.
+                    </p>
+                    <p>
+                        Her music transports listeners into an intimate
+                        dreamscape, drawing inspiration from nature, childhood
+                        memories, and fantasy. Aoba’s sound is often described
+                        as peaceful and calming, creating a serene atmosphere in
+                        which listeners can reflect and lose themselves.
+                    </p>
+                    <p>
+                        Since her 2010 debut, she has released over seven
+                        albums, and has traveled across the globe with nothing
+                        more than her voice and nylon-string guitar. Since
+                        releasing Windswept Adan (2020), described as a
+                        “soundtrack for a fictional film,” she has also begun to
+                        incorporate strings in her live shows.
+                    </p>
+                    <p>
+                        Aoba’s work as a radio presenter, narrator, film
+                        composer, and performer across a wide variety of fields
+                        has consistently won her acclaim, including the
+                        prestigious best soundtrack award at the 77th Mainichi
+                        Film Awards for her work on Amiko (2022). Recipient of
+                        the ANCHOR Award at the 2023 Reeperbahn Festival.
+                    </p>
+                </div>
+
+                <div class="biography-image">
+                    <img src="Images/ichiko.png" alt="Ichiko Aoba" />
+                    <p>Photography: Rooves 13</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <h1 class="section-title">Featured Video</h1>
+            <div class="featured-video-section">
+                <div class="tv-wrapper">
+                    <div class="tv-container">
+                        <iframe
+                            id="video-iframe"
+                            src=""
+                            title="Ichiko Aoba - Featured Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy"
+                        ></iframe>
+                        <img
+                            src="Images/tv.png"
+                            alt="Retro TV"
+                            class="tv-frame"
+                        />
+                    </div>
+                </div>
+                <div class="video-details">
+                    <h2 id="video-title">Featured Video</h2>
+                    <p id="video-description">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s.
+                    </p>
+                    <a id="watch-link" href="#" target="_blank">
+                        <button class="watch-button">WATCH NOW &gt;</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-social">
+                    <h4>Follow Ichiko Aoba</h4>
+                    <ul class="social-icons">
+                        <li>
+                            <a
+                                href="https://twitter.com/ichikoaoba"
+                                target="_blank"
+                                ><i class="fab fa-twitter"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.instagram.com/ichikoaoba"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.facebook.com/ichikoaoba"
+                                target="_blank"
+                                ><i class="fab fa-facebook-f"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://open.spotify.com/artist/1fUZTiJcRd0gQcwOpOXgo9"
+                                target="_blank"
+                                ><i class="fab fa-spotify"></i
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#discography">Discography</a></li>
+                        <li><a href="#biography">Biography</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Ichiko Aoba. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#biography" class="scroll-link">
+            <div class="scroll-indicator">
+                <span>SCROLL DOWN</span>
+                <div class="arrow"></div>
+            </div>
+        </a>
+
+        <script>
+            const videos = [
+                {
+                    src: "https://www.youtube.com/embed/4JprPTHR808?autoplay=1&controls=0&modestbranding=1&fs=0&rel=0",
+                    description:
+                        "Ichiko Aoba performs a beautiful rendition of her song in this live video.",
+                    title: "Ichiko Aoba - Porcelain",
+                },
+                {
+                    src: "https://www.youtube.com/embed/byvta9LHo2o?autoplay=1&controls=0&modestbranding=1&fs=0&rel=0",
+                    description:
+                        "Experience the ethereal sounds of Ichiko Aoba in this captivating music video.",
+                    title: "Ichiko Aoba - Ikinokori●Bokura",
+                },
+                {
+                    src: "https://www.youtube.com/embed/gHMTwkf6Z8A?autoplay=1&controls=0&modestbranding=1&fs=0&rel=0",
+                    description:
+                        "Enjoy a soothing ambient track by Ichiko Aoba, perfect for relaxation and focus.",
+                    title: "Ichiko Aoba - Hello",
+                },
+            ];
+
+            function loadRandomVideo() {
+                const randomVideo =
+                    videos[Math.floor(Math.random() * videos.length)];
+                document.getElementById("video-iframe").src = randomVideo.src;
+                document.getElementById("video-title").innerText =
+                    randomVideo.title;
+                document.getElementById("video-description").innerText =
+                    randomVideo.description;
+                const videoLink = randomVideo.src.split("?")[0];
+                document.getElementById("watch-link").href = videoLink;
+            }
+
+            window.onload = loadRandomVideo;
+        </script>
+        <script src="script.js"></script>
+    </body>
+</html>
